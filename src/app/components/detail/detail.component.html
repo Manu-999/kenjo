@@ -1,1 +1,7 @@
-<p>detail works!</p>
+<button type="button" (click)="showItems()">Get Albums</button>
+
+<div *ngIf="albums">
+  <div *ngFor="let album of albums">
+    <li>{{ album.title }}</li>
+  </div>
+</div>

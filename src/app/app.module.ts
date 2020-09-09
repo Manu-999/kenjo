@@ -7,10 +7,11 @@ import { FormComponent } from './components/form/form.component';
 import { DetailComponent } from './components/detail/detail.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, FormComponent, DetailComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
