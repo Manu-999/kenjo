@@ -6,13 +6,25 @@
     <img src="{{ album.coverUrl }}" class="album-img-detail" />
     <p>{{ album.year }}</p>
     <p>{{ album.genre }}</p>
+    <!-- <p *ngIf="artistsMapped[i]">{{ artist.name }}</p> -->
     <button mat-flat-button color="primary" (click)="clickOnEdit = true">
       Edit
     </button>
     <button mat-flat-button color="warn" (click)="deleteAlbum(i)">
       Delete
     </button>
-    <button mat-flat-button color="accent">Link to artist</button>
+    <button mat-flat-button color="accent" (click)="clickedOnLinkArtist = true">
+      Link to artist
+    </button>
+
+    <div *ngIf="clickedOnLinkArtist">
+      <div *ngFor="let artist of artists; let idx = index">
+        <p>{{ artist.name }}</p>
+        <button mat-flat-button color="accent" (click)="linkToArtist(i, idx)">
+          Link
+        </button>
+      </div>
+    </div>
 
     <div *ngIf="clickOnEdit">
       <h1 mat-dialog-title>Edit album</h1>

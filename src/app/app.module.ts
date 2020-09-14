@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormComponent } from './components/form/form.component';
 import { DetailComponent } from './components/detail/detail.component';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -15,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [AppComponent, FormComponent, DetailComponent],
+  declarations: [AppComponent, DetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

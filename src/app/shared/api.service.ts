@@ -8,11 +8,6 @@ import { Album } from '../models/album';
 })
 export class ApiService {
   private url = 'http://localhost:3000';
-  public artist: Artist;
-  public album: Album;
-  public artists: Artist[];
-  public albums: Album[];
-  public index: number;
 
   constructor(private http: HttpClient) {}
 
@@ -34,5 +29,13 @@ export class ApiService {
 
   createAlbum(data: {}) {
     return this.http.post(this.url + '/album', data);
+  }
+
+  getArtists() {
+    return this.http.get(this.url + '/artists/all/');
+  }
+
+  getArtist(id) {
+    return this.http.get(this.url + '/artist/' + id);
   }
 }
