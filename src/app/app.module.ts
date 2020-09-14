@@ -8,10 +8,31 @@ import { DetailComponent } from './components/detail/detail.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogEditComponent } from './components/dialog-edit/dialog-edit.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [AppComponent, FormComponent, DetailComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
+  declarations: [
+    AppComponent,
+    FormComponent,
+    DetailComponent,
+    DialogEditComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatIconModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

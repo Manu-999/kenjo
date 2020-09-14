@@ -1,7 +1,62 @@
-<button type="button" (click)="showItems()">Get Albums</button>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let album of albums; let i = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ album.title }} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <img src="{{ album.coverUrl }}" class="album-img-detail" />
+    <p>{{ album.year }}</p>
+    <p>{{ album.genre }}</p>
+    <button mat-flat-button color="primary" (click)="clickOnEdit = true">
+      Edit
+    </button>
+    <button mat-flat-button color="warn" (click)="deleteAlbum(i)">
+      Delete
+    </button>
+    <button mat-flat-button color="accent">Link to artist</button>
 
-<div *ngIf="albums">
-  <div *ngFor="let album of albums">
-    <li>{{ album.title }}</li>
-  </div>
-</div>
+    <div *ngIf="clickOnEdit">
+      <h1 mat-dialog-title>Edit album</h1>
+      <mat-form-field class="example-form-field">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" value="{{ albums[i].title }}" #title />
+        <button mat-button matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <mat-label>Cover URL</mat-label>
+        <input matInput type="text" value="{{ albums[i].coverUrl }}" #cover />
+        <button mat-button matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <mat-label>Year</mat-label>
+        <input matInput type="text" value="{{ albums[i].year }}" #year />
+        <button mat-button matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <mat-label>Genre</mat-label>
+        <input matInput type="text" value="{{ albums[i].genre }}" #genre />
+        <button mat-button matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <button
+        mat-button
+        (click)="
+          editAlbum(i, title.value, cover.value, year.value, genre.value)
+        "
+      >
+        Edit
+      </button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<button mat-flat-button color="accent">Add album</button>

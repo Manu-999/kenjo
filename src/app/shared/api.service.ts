@@ -12,10 +12,23 @@ export class ApiService {
   public album: Album;
   public artists: Artist[];
   public albums: Album[];
+  public index: number;
 
   constructor(private http: HttpClient) {}
 
-  getItems() {
+  getAlbums() {
     return this.http.get(this.url + '/albums/all');
+  }
+
+  getAlbum(id: string) {
+    return this.http.get(this.url + '/album/' + id);
+  }
+
+  deleteAlbum(id: string) {
+    return this.http.delete(this.url + '/album/' + id);
+  }
+
+  editAlbum(id: string, data: {}) {
+    return this.http.put(this.url + '/album/' + id, data);
   }
 }
