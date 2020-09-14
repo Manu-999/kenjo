@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 
 @Component({
   selector: 'app-detail',
@@ -11,6 +10,7 @@ import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 export class DetailComponent implements OnInit {
   public albums;
   public clickOnEdit: boolean = false;
+  public clickOnAddAlbum: boolean = false;
   constructor(private api: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -39,5 +39,19 @@ export class DetailComponent implements OnInit {
     this.api
       .editAlbum(this.albums[index]._id, edit)
       .subscribe((data) => this.showItems());
+  }
+
+  addAlbum(title, cover, year, genre) {
+    let data = {
+      title: title,
+      coverUrl: cover,
+      year: year,
+      genre: genre,
+    };
+    this.api.createAlbum(data).subscribe((data) => {
+      this.albums.push(data);
+      this.showItems();
+      this.clickOnAddAlbum = false;
+    });
   }
 }

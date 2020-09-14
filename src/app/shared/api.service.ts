@@ -31,4 +31,8 @@ export class ApiService {
   editAlbum(id: string, data: {}) {
     return this.http.put(this.url + '/album/' + id, data);
   }
+
+  createAlbum(data: {}) {
+    return this.http.post(this.url + '/album', data);
+  }
 }

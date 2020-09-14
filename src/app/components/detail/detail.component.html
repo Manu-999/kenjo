@@ -59,4 +59,49 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<button mat-flat-button color="accent">Add album</button>
+<button mat-flat-button color="accent" (click)="clickOnAddAlbum = true">
+  Add album
+</button>
+
+<div *ngIf="clickOnAddAlbum">
+  <h1 mat-dialog-title>Add album</h1>
+  <mat-form-field class="example-form-field">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" #titleAdd />
+    <button mat-button matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Cover URL</mat-label>
+    <input matInput type="text" #coverAdd />
+    <button mat-button matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Year</mat-label>
+    <input matInput type="text" #yearAdd />
+    <button mat-button matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Genre</mat-label>
+    <input matInput type="text" #genreAdd />
+    <button mat-button matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button
+    mat-button
+    (click)="
+      addAlbum(titleAdd.value, coverAdd.value, yearAdd.value, genreAdd.value)
+    "
+  >
+    Add album
+  </button>
+</div>
