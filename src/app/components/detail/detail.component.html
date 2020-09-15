@@ -1,119 +1,125 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let album of albums; let i = index">
-    <mat-expansion-panel-header>
-      <mat-panel-title> {{ album.title }} </mat-panel-title>
-    </mat-expansion-panel-header>
-    <img src="{{ album.coverUrl }}" class="album-img-detail" />
-    <p>{{ album.year }}</p>
-    <p>{{ album.genre }}</p>
-    <!-- <p *ngIf="artistsMapped[i]">{{ artist.name }}</p> -->
-    <button mat-flat-button color="primary" (click)="clickOnEdit = true">
-      Edit
-    </button>
-    <button mat-flat-button color="warn" (click)="deleteAlbum(i)">
-      Delete
-    </button>
-    <button mat-flat-button color="accent" (click)="clickedOnLinkArtist = true">
-      Link to artist
-    </button>
-
-    <div *ngIf="clickedOnLinkArtist">
-      <div *ngFor="let artist of artists; let idx = index">
-        <p>{{ artist.name }}</p>
-        <button mat-flat-button color="accent" (click)="linkToArtist(i, idx)">
-          Link
-        </button>
-      </div>
-    </div>
-
-    <div *ngIf="clickOnEdit">
-      <h1 mat-dialog-title>Edit album</h1>
-      <mat-form-field class="example-form-field">
-        <mat-label>Title</mat-label>
-        <input matInput type="text" value="{{ albums[i].title }}" #title />
-        <button mat-button matSuffix mat-icon-button aria-label="Clear">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-
-      <mat-form-field class="example-form-field">
-        <mat-label>Cover URL</mat-label>
-        <input matInput type="text" value="{{ albums[i].coverUrl }}" #cover />
-        <button mat-button matSuffix mat-icon-button aria-label="Clear">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-
-      <mat-form-field class="example-form-field">
-        <mat-label>Year</mat-label>
-        <input matInput type="text" value="{{ albums[i].year }}" #year />
-        <button mat-button matSuffix mat-icon-button aria-label="Clear">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-
-      <mat-form-field class="example-form-field">
-        <mat-label>Genre</mat-label>
-        <input matInput type="text" value="{{ albums[i].genre }}" #genre />
-        <button mat-button matSuffix mat-icon-button aria-label="Clear">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <button
-        mat-button
-        (click)="
-          editAlbum(i, title.value, cover.value, year.value, genre.value)
-        "
-      >
+<div class="container">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let album of albums; let i = index">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ album.title }} </mat-panel-title>
+      </mat-expansion-panel-header>
+      <img src="{{ album.coverUrl }}" class="album-img-detail" />
+      <p>{{ album.year }}</p>
+      <p>{{ album.genre }}</p>
+      <!-- <p *ngIf="artistsMapped[i]">{{ artist.name }}</p> -->
+      <button mat-flat-button color="primary" (click)="clickOnEdit = true">
         Edit
       </button>
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+      <button mat-flat-button color="warn" (click)="deleteAlbum(i)">
+        Delete
+      </button>
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="clickedOnLinkArtist = true"
+      >
+        Link to artist
+      </button>
 
-<button mat-flat-button color="accent" (click)="clickOnAddAlbum = true">
-  Add album
-</button>
+      <div *ngIf="clickedOnLinkArtist">
+        <div *ngFor="let artist of artists; let idx = index">
+          <p>{{ artist.name }}</p>
+          <button mat-flat-button color="accent" (click)="linkToArtist(i, idx)">
+            Link
+          </button>
+        </div>
+      </div>
 
-<div *ngIf="clickOnAddAlbum">
-  <h1 mat-dialog-title>Add album</h1>
-  <mat-form-field class="example-form-field">
-    <mat-label>Title</mat-label>
-    <input matInput type="text" #titleAdd />
-    <button mat-button matSuffix mat-icon-button aria-label="Clear">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+      <div *ngIf="clickOnEdit">
+        <h1 mat-dialog-title>Edit album</h1>
+        <mat-form-field class="example-form-field">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" value="{{ albums[i].title }}" #title />
+          <button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <mat-label>Cover URL</mat-label>
-    <input matInput type="text" #coverAdd />
-    <button mat-button matSuffix mat-icon-button aria-label="Clear">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+        <mat-form-field class="example-form-field">
+          <mat-label>Cover URL</mat-label>
+          <input matInput type="text" value="{{ albums[i].coverUrl }}" #cover />
+          <button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <mat-label>Year</mat-label>
-    <input matInput type="text" #yearAdd />
-    <button mat-button matSuffix mat-icon-button aria-label="Clear">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+        <mat-form-field class="example-form-field">
+          <mat-label>Year</mat-label>
+          <input matInput type="text" value="{{ albums[i].year }}" #year />
+          <button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
 
-  <mat-form-field class="example-form-field">
-    <mat-label>Genre</mat-label>
-    <input matInput type="text" #genreAdd />
-    <button mat-button matSuffix mat-icon-button aria-label="Clear">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  <button
-    mat-button
-    (click)="
-      addAlbum(titleAdd.value, coverAdd.value, yearAdd.value, genreAdd.value)
-    "
-  >
+        <mat-form-field class="example-form-field">
+          <mat-label>Genre</mat-label>
+          <input matInput type="text" value="{{ albums[i].genre }}" #genre />
+          <button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          mat-button
+          (click)="
+            editAlbum(i, title.value, cover.value, year.value, genre.value)
+          "
+        >
+          Edit
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <button mat-flat-button color="accent" (click)="clickOnAddAlbum = true">
     Add album
   </button>
+
+  <div *ngIf="clickOnAddAlbum">
+    <h1 mat-dialog-title>Add album</h1>
+    <mat-form-field class="example-form-field">
+      <mat-label>Title</mat-label>
+      <input matInput type="text" #titleAdd />
+      <button mat-button matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Cover URL</mat-label>
+      <input matInput type="text" #coverAdd />
+      <button mat-button matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Year</mat-label>
+      <input matInput type="text" #yearAdd />
+      <button mat-button matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Genre</mat-label>
+      <input matInput type="text" #genreAdd />
+      <button mat-button matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button
+      mat-button
+      (click)="
+        addAlbum(titleAdd.value, coverAdd.value, yearAdd.value, genreAdd.value)
+      "
+    >
+      Add album
+    </button>
+  </div>
 </div>

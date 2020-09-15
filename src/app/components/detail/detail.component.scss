@@ -1,3 +1,14 @@
 .album-img-detail {
   width: 60%;
 }
+
+@media (min-width: 600px) {
+  .album-img-detail {
+    width: 40%;
+  }
+
+  .container {
+    width: 70%;
+    margin: auto;
+  }
+}

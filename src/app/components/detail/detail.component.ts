@@ -11,7 +11,6 @@ import { Album } from '../../models/album';
 export class DetailComponent implements OnInit {
   public albums;
   public artists;
-  public linkedArtist;
   public clickOnEdit: boolean = false;
   public clickOnAddAlbum: boolean = false;
   public clickedOnLinkArtist: boolean = false;
@@ -21,14 +20,14 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
     this.showItems();
     this.api.getArtists().subscribe((artists) => (this.artists = artists));
-    this.artistsMapped = this.albums.map((album) => {
-      console.log(album.artistId);
-      if (album.artistId) {
-        this.api.getArtist(album.artistId).subscribe((artist) => artist);
-      } else {
-        return null;
-      }
-    });
+    // this.artistsMapped = this.albums.map((album) => {
+    //   console.log(album.artistId);
+    //   if (album.artistId) {
+    //     this.api.getArtist(album.artistId).subscribe((artist) => artist);
+    //   } else {
+    //     return null;
+    //   }
+    // });
   }
 
   showItems() {
